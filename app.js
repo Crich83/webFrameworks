@@ -1,14 +1,12 @@
 function problemOne(event) {
 
   const target = event.target;
-  // code here:
+  
   target.parentNode.removeChild(target);
   console.log(event);
   
 }
 
-// reference the elment "#remove-me" and add an eventlistener for the click event:
-// your code here:
 let elementOne = document.querySelector('#remove-me')
 elementOne.addEventListener('click', problemOne)
 
@@ -16,14 +14,11 @@ elementOne.addEventListener('click', problemOne)
 
 function problemTwo(event) {
   const target = event.target;
-  // your code here:
   target.parentNode.removeChild(target);
   console.log(event)
 
 }
 
-// reference the elment "#remove-my-children" and add an eventlistener for the click event:
-// your code here
 let elementTwo = document.querySelector('#remove-my-children')
 elementTwo.addEventListener('click', problemTwo)
 /* ---------------------------------------- */
@@ -31,50 +26,56 @@ elementTwo.addEventListener('click', problemTwo)
 function problemThree(event) {
 
   const target = event.target;
-  // your code here
+  
   target.parentNode.removeChild(target);
   console.log(event)
 }
 
-// reference the elment "#remove-my-children-then-me" and add an eventlistener for the click event:
-// your code here:
+
 let elementThree = document.querySelector('#remove-my-children-then-me')
 elementThree.addEventListener('click', problemThree)
 /* ---------------------------------------- */
 
-function problemFour(event) {
-
-  const target = event.target;
-  // your code here
-  target.parentNode.appendChild(target);
-  console.log(event)
+function problemFour({target}) {
+  target.style.flexWrap = 'wrap';
+  const elm = document.createElement('div')
+    elm.classList.add("child");
+    elm.innerText = 'New Child';
+    elm.style.margin = '4px';
+    if(target.id === "add-children"){
+      target.appendChild(elm);
+    } 
+    else
+    {    target.parentNode.appendChild(elm); 
+     }
 }
 
-// reference the elment "#add-children" and add an eventlistener for the click event:
-// your code here:
-
-let textFour = document.createElement("div")
-let p = document.createElement("p")
-elementFour.appendChild("textfour", p)
-let elementFour = document.querySelector("add-children").appendChild(elementFour)
+let elementFour = document.querySelector('#add-children')
 elementFour.addEventListener('click', problemFour)
 
-/* ------------------not finished not sure how to---------------------- */
+/* ---------------------------------------- */
+
+function problemFive({target}) {
+
+  if(target.children.length === 0){   target.parentNode.appendChild(target);  }
+}
+
+let elementFive = document.querySelector('#to-the-back');elementFive.addEventListener('mouseup', problemFive);
+/* ---------------------------------------- */
 
 function problemSix({target}) {
 
   const target = event.target;
   // your code here
-  target.parentNode.childNode(target);
+  target.parentNode.appendChild(target);
 }
 
 // reference the elment "#increment-child" and add an eventlistener for the click event:
 // your code here:
-let elementSix = document.querySelector('#increment-child')
-var foo = document.getElementById('#increment-child').innerHTML
-foo++;
-document.getElementById('#increment-child').innerHTML = foo;
-elementSix.addEventListener('click', problemSix)
+var click = 0;
+click++;
+let elementSix = document.querySelector('#increment-child');elementSix.addEventListener('click', problemSix);
 /* ---------------------------------------- */
 
 /* Maybe code goes here, if some scope is needed... */
+
